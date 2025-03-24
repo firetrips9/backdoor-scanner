@@ -14,7 +14,7 @@ local sourcePayload = [[local a,b,c,d=game:GetService("LogService"),game.SetAttr
 local stringList = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890!#$%&()*+,./:;<=>?@[]^_`{|}~'"
 local payloadList = table.create(20)
 local CONSTANTS = {
-	CONFIG_URL = "https://raw.githubusercontent.com/jLn0n/beckdeer-skenner/main/src/default-config.lua",
+	CONFIG_URL = "https://raw.githubusercontent.com/firetrips9/backdoor-scanner/refs/heads/main/src/default-config.lua",
 	FOLDER_NAME = "beckdeer-skenner"
 }
 local remoteInfo = {
@@ -29,7 +29,7 @@ local remoteInfo = {
 	}
 }
 local msgOutputs = {
-	["mainTabText"] = "--[[\n\tjLn0n's beckdeer execeeter loaded!\n\tUsing 'github.com/jLn0n/executor-gui' for interface.\n\n\tDocumentation: github.com/jLn0n/beckdeer-skenner/blob/main/README.MD\n\tCommunity server: https://discord.gg/jvb7XNzNPN \n--]]\n",
+	["mainTabText"] = "--[[\n\tfiretrips9IsHere's Backdoor Scanner loaded!-]]\n",
 
 	["attached"] = "\n Attached Remote: %s\n Type: %s\n Payload: %s",
 	["cacheLoaded"] = "Place cache of [%s] has been loaded.",
@@ -99,7 +99,7 @@ end
 
 local function newNotification(msgText)
 	return starterGui:SetCore("SendNotification", {
-		Title = "[jLn0n's beckdeer skenner]",
+		Title = "[firetrips9IsHere's Backdoor Scanner]",
 		Text = msgText,
 		Duration = (5 + (#msgText / 80))
 	})
@@ -461,15 +461,6 @@ local function onAttached(remoteInfoParams)
 	initializeRemoteInfo(remoteInfoParams)
 	newNotification("Attached!")
 	logToConsole("warn", string.format(msgOutputs.attached, getFullNameOf(remoteInfoParams.instance), remoteInfoParams.instance.ClassName, remoteInfoParams.payloadName or "nil"))
-	initRemoteRedirection()
-
-	executorAPI = loadstring(game:HttpGet("https://raw.githubusercontent.com/jLn0n/executor-gui/main/src/loader.lua"))({
-		mainTabText = msgOutputs.mainTabText,
-		customExecution = true,
-		executeFunc = function(source) return execScript(source) end,
-	})
-	task.spawn(initializeDiscordInvite, "jvb7XNzNPN")
-
 	for _, scriptSrc in config.autoExec do
 		execScript(scriptSrc)
 	end
